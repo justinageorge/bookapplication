@@ -1,0 +1,34 @@
+{%extends 'base.html'%}
+{%block body_block%}
+<h1 class="text-center bg-info">all books</h1>
+    <div class="container ">
+        <table class=" table table-warning table-striped">
+            <tr>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>publisher</th>
+            <th>Activity</th>
+        </tr>
+        {%for book in data%}
+        <tr>
+            <td>{{book.name}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.price}}</td>
+            <td>{{book.publisher}}</td>
+            <td>
+                <a href="{% url 'book-detail' book.id%}" class="btn btn-outline-danger">view</a>
+                <a href="{%url 'book-remove' book.id%}"class="btn btn-outline-primary">Remove</a>
+                <a href="{%url 'book-change' book.id%}"class="btn btn-outline-info">edit</a>
+              
+               
+            </td>
+        </tr>
+        {%endfor%}
+
+
+        </table>
+    </div>
+
+
+{%endblock%}
